@@ -19,7 +19,7 @@ const url = `https://api.thecatapi.com/v1/breeds`;
 const api_key =
   'live_ds7IOLf26S1PWwqgPFrJeWA3DKWOVsAilq9eQpOhrh5ZJrNWtWQLnqoUn19c2yKi';
 
-// fetchBreeds();
+fetchBreeds();
 
 function fetchBreeds() {
   let storedBreeds = [];
