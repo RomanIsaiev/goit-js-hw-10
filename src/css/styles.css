@@ -1,0 +1,36 @@
+.breed-select {
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.cat-container {
+  display: flex;
+}
+
+.cat-image {
+  display: block;
+  margin-right: 20px;
+}
+
+.loader {
+  font-size: 26px;
+}
+
+.error {
+  font-size: 26px;
+}
+
+.cat-name {
+  font-size: 28px;
+}
+
+.cat-desc {
+  max-width: 400px;
+  font-size: 18px;
+}
+
+.cat-temp {
+  max-width: 400px;
+  font-size: 16px;
+}
