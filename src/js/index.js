@@ -8,7 +8,7 @@ const refs = {
   error: document.querySelector('.error'),
 };
 
-refs.breedSelector.addEventListener('change', fetchBreeds);
+refs.breedSelector.addEventListener('change', onSearch);
 
 refs.breedSelector.style.display = 'none';
 refs.loader.style.display = 'block';
@@ -19,36 +19,39 @@ const url = `https://api.thecatapi.com/v1/breeds`;
 const api_key =
   'live_ds7IOLf26S1PWwqgPFrJeWA3DKWOVsAilq9eQpOhrh5ZJrNWtWQLnqoUn19c2yKi';
 
-fetchBreeds();
+fetchBreeds()
+  .then(renderBreedsCollection)
+  .catch(error => {
+    refs.error.style.display = 'block';
+    console.log(error);
+  });
+
+function onSearch() {
+  const breedId = refs.breedSelector.value;
+  fetchCatByBreed(breedId)
+    .then(renderCatCard)
+    .catch(error => {
+      refs.error.style.display = 'block';
+      console.log(error);
+      refs.catContainer.innerHTML = '';
+    });
+}
 
 function fetchBreeds() {
+  refs.catContainer.style.display = 'none';
+  refs.loader.style.display = 'block';
   return fetch(url, {
     headers: {
       'x-api-key': api_key,
     },
-  })
-    .then(response => {
-      refs.catContainer.style.display = 'none';
-      refs.loader.style.display = 'block';
-      return response.json();
-    })
-    .then(data => {
-      renderBreedsCollection(data);
-      const breedId = refs.breedSelector.value;
-      fetchCatByBreed(breedId)
-        .then(renderCatCard)
-        .catch(error => {
-          refs.error.style.display = 'block';
-          console.log(error);
-        });
-    })
-    .catch(error => {
-      refs.error.style.display = 'block';
-      console.log(error);
-    });
+  }).then(response => {
+    return response.json();
+  });
 }
 
 function fetchCatByBreed(breedId) {
+  refs.catContainer.style.display = 'none';
+  refs.loader.style.display = 'block';
   return fetch(
     `https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`,
     {
@@ -57,13 +60,12 @@ function fetchCatByBreed(breedId) {
       },
     }
   ).then(response => {
-    refs.catContainer.style.display = 'none';
-    refs.loader.style.display = 'block';
     return response.json();
   });
 }
 
 function renderCatCard(data) {
+  refs.error.style.display = 'none';
   refs.loader.style.display = 'none';
   refs.catContainer.style.display = 'block';
   const breeds = data[0].breeds;
