@@ -20,21 +20,6 @@ const api_key =
   'live_ds7IOLf26S1PWwqgPFrJeWA3DKWOVsAilq9eQpOhrh5ZJrNWtWQLnqoUn19c2yKi';
 
 fetchBreeds();
-// .then(data => {
-//   renderBreedsCollection(data);
-//   const breedId = refs.breedSelector.value;
-//   console.log(breedId);
-//   fetchCatByBreed(breedId)
-//     .then(renderCatCard)
-//     .catch(error => {
-//       refs.error.style.display = 'block';
-//       console.log(error);
-//     });
-// })
-// .catch(error => {
-//   refs.error.style.display = 'block';
-//   console.log(error);
-// });
 
 function fetchBreeds() {
   return fetch(url, {
