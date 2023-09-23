@@ -75,6 +75,8 @@ function renderBreedsCollection(data) {
   //   document.querySelector('.breed-select').appendChild(option);
   // }
 
+  console.log('pepsi');
+
   data.map(catBreed => {
     const breedsSelect = `<option value='${catBreed.id}'>${catBreed.name}</option>`;
     refs.breedSelector.insertAdjacentHTML('beforeend', breedsSelect);
