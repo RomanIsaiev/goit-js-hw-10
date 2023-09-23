@@ -8,8 +8,6 @@ refs.loader.style.display = 'block';
 refs.error.style.display = 'none';
 refs.catContainer.style.display = 'none';
 
-console.log('5');
-
 const url = `https://api.thecatapi.com/v1/breeds`;
 const api_key =
   'live_ds7IOLf26S1PWwqgPFrJeWA3DKWOVsAilq9eQpOhrh5ZJrNWtWQLnqoUn19c2yKi';
@@ -74,8 +72,6 @@ function renderBreedsCollection(data) {
 
   //   document.querySelector('.breed-select').appendChild(option);
   // }
-
-  console.log('pepsi');
 
   data.map(catBreed => {
     const breedsSelect = `<option value='${catBreed.id}'>${catBreed.name}</option>`;
