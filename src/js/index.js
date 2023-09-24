@@ -60,18 +60,8 @@ function renderCatCard(data) {
 }
 
 function renderBreedsCollection(data) {
-  // let storedBreeds = [];
   refs.breedSelector.style.display = 'block';
   refs.loader.style.display = 'none';
-  // storedBreeds = data;
-  // for (let i = 0; i < storedBreeds.length; i++) {
-  //   const breed = storedBreeds[i];
-  //   let option = document.createElement('option');
-  //   option.value = `${breed.id}`;
-  //   option.innerHTML = `${breed.name}`;
-
-  //   document.querySelector('.breed-select').appendChild(option);
-  // }
 
   data.map(catBreed => {
     const breedsSelect = `<option value='${catBreed.id}'>${catBreed.name}</option>`;
