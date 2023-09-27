@@ -75,34 +75,45 @@ import { fetchCatByBreed } from './cat-api';
 import { refs } from './refs';
 import { createCatInfoMarkup } from './cat-markup';
 import { apiInstance } from './api';
+import SlimSelect from 'slim-select';
+import 'slim-select/dist/slimselect.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 refs.breedSelector.addEventListener('change', onSearch);
 refs.breedSelector.style.display = 'none';
-refs.loader.style.display = 'block';
+refs.loader.style.display = 'flex';
 refs.error.style.display = 'none';
 refs.catContainer.style.display = 'none';
 
 fetchBreeds()
-  .then(renderBreedsCollection)
+  .then(data => {
+    renderBreedsCollection(data);
+    new SlimSelect({
+      select: '#breed-selector',
+    });
+  })
   .catch(error => {
     refs.error.style.display = 'block';
     console.log(error);
+    Notify.failure(error);
   });
 
 function onSearch() {
   const breedId = refs.breedSelector.value;
+
   fetchCatByBreed(breedId)
     .then(renderCatCard)
     .catch(error => {
       refs.error.style.display = 'block';
       console.log(error);
+      Notify.failure('ERROR');
       refs.catContainer.innerHTML = '';
     });
 }
 
 function fetchBreeds() {
   refs.catContainer.style.display = 'none';
-  refs.loader.style.display = 'block';
+  refs.loader.style.display = 'flex';
 
   return apiInstance.get(`/v1/breeds`).then(result => result.data);
 }

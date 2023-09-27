@@ -7,8 +7,16 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <select class="breed-select"></select>
-    <p class="loader">Loading data, please wait...</p>
+    <select
+      class="breed-select"
+      id="breed-selector"
+      style="overflow-y: auto"
+    ></select>
+    <div class="loader">
+      <p>Loading data, please wait...</p>
+      <span class="loader-spin"></span>
+    </div>
+
     <p class="error">Oops! Something went wrong! Try reloading the page!</p>
     <div class="cat-info"></div>
     <script src="./js/index.js" type="module"></script>

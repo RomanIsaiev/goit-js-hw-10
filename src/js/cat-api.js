@@ -26,7 +26,7 @@ import { refs } from './refs';
 
 export function fetchCatByBreed(breedId) {
   refs.catContainer.style.display = 'none';
-  refs.loader.style.display = 'block';
+  refs.loader.style.display = 'flex';
 
   apiInstance.defaults.headers['X-API-KEY'] =
     'live_ds7IOLf26S1PWwqgPFrJeWA3DKWOVsAilq9eQpOhrh5ZJrNWtWQLnqoUn19c2yKi';
