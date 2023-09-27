@@ -91,7 +91,6 @@ fetchBreeds()
 
 function onSearch() {
   const breedId = refs.breedSelector.value;
-  console.log(breedId);
   fetchCatByBreed(breedId)
     .then(renderCatCard)
     .catch(error => {
